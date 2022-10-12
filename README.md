@@ -13,5 +13,5 @@ May they inspire you to write new bash functions!
 
 ## Related repos
 
-- emacs4oscer
-- vimrc4oscer
+- [emacs4oscer](https://github.com/MooersLab/emacs4oscer)
+- [vimrc4oscer](https://github.com/MooersLab/vimrc4oscer)
