@@ -9,3 +9,7 @@ The file paths will need editing.
 The bash script calls two Python scripts in the subfolder.
 
 May they inspire you to write new bash functions!
+
+
+## Related repos
+
