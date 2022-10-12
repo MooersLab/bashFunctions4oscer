@@ -225,6 +225,23 @@ open -a Skim "$1".pdf
 
 ### D
 
+function dirtree()
+{
+echo "Get directory tree of specified directory. May have to install tree from external repository."
+if [ $# -lt 1 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo "Usage: dirtree <dir>"
+  echo "Example: tree -F -a --dirsfirst 512RNAdrugCrystallization"
+elif [ $# -gt 1 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo "Usage: dirtree <dir>"
+  echo "Example: tree -F -a --dirsfirst 512RNAdrugCrystallization"
+fi
+tree -F -a --dirsfirst $1;
+}
+
+
+
 dssr()
 {
 if [ $# -lt 1 ]; then
@@ -265,6 +282,25 @@ elif [ $# -gt 1 ]; then
 fi
 /home/bmooers/pythonScripts/G2K.py $1;
 }
+
+function gac(){
+echo "Function to git add a file and then commit the changes with a message."
+echo "Takes the name of a file and the message in a string."
+echo "Must set up repository in advance of using this function."
+if [ $# -lt 2 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo "Usage: gca filename 'message about the commit'"
+  return 2
+elif [ $# -gt 2 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo "Usage: gct "
+  echo "Note absence of file extension .tex"
+  return 2
+fi
+git add "$1" 
+git commit -m "$2" "$1"
+}
+
 
 
 gct()
@@ -354,6 +390,24 @@ git commit -m "Added new text in $1.R" "$1".R
 }
 
 
+function getpdb()
+{
+echo "Get PDB coordinate file from the Protein Data Bank."
+if [ $# -lt 1 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo "Usage: getpdb <pdb-id>"
+  echo "Example: getpdb 4rj1."
+elif [ $# -gt 1 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo "Usage: getpdb <pdb-id>"
+  echo "Example: getpdb 4rj1."
+fi
+/Users/blaine/Scripts/PythonScripts/pdb_get.py $1;
+}
+
+
+
+
 google() {
 echo "send a search term to google from the command line"
 echo "Example: google OUHSC biochemistry"
@@ -397,6 +451,13 @@ function jpt(){
 
 
 ### L
+
+function lsf() {
+echo "Current path: $PWD" 
+ls -ltrG
+}
+
+
 lsnoabi()
 {
 echo "List folders with *_abi.mtz absent."
@@ -524,10 +585,40 @@ for FILE in ./*.pdf
   done
 }
 
+
+function pyc()
+{
+echo "Evaluate simple math expressions with Python. Math expression must be passed inside double quotes."
+echo 'Example1 using built-in: pyc "110./10."'
+echo 'Example2 using the math module: pyc "math.sin(math.radians(90))"'
+echo 'To see the available math functions, enter python -c "import math;print(dir(math))"'
+if [ $# -lt 1 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo 'Example: pyc "110./10."'
+  return 2
+elif [ $# -gt 1 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo 'Example: pyc "110./10."'
+fi
+python -c 'import math;print(eval("'$1'"))'
+}
+
+alias dzpdf="rename 's/\(z-lib.org\)./\./' *.pdf"
+alias dzepub="rename 's/\(z-lib.org\)./\./' *.epub"
+
 ### Q
 
 
 ### R
+rmcommas()
+{
+echo "Remove commas in all filenames in a directory"
+echo "Usage: rmcommas"
+for f in *,*;
+  do
+    mv "$f" "${f//,/}";
+  done
+}
 
 
 rmduplicates(){
@@ -547,6 +638,29 @@ for file in **;
     fi
   done
 }
+
+
+rmspaces()
+{
+echo "Remove whitespaces in all filenames in a directory"
+echo "Usage: rmspaces"
+for f in *\ *;
+  do
+    mv "$f" "${f// /}";
+  done
+}
+
+
+rmunderscores()
+{
+echo "Remove underscores in all filenames in a directory"
+echo "Usage: rmscores"
+for f in *_*;
+  do
+    mv "$f" "${f//_/}";
+  done
+}
+
 
 #redoLaunch()
 #{
@@ -692,6 +806,21 @@ function take() {
   fi
 }
 
+
+function tre()
+{
+echo "Get directory tree of specified directory. May have to install tree from external repository."
+if [ $# -lt 1 ]; then
+  echo 1>&2 "$0: not enough arguments"
+  echo "Usage: tre <dir>"
+  echo "Example: tree -F -a --dirsfirst 512RNAdrugCrystallization"
+elif [ $# -gt 1 ]; then
+  echo 1>&2 "$0: too many arguments"
+  echo "Usage: tre <dir>"
+  echo "Example: tree -F -a --dirsfirst 512RNAdrugCrystallization"
+fi
+tree -F -a --dirsfirst $1;
+}
 
 
 
