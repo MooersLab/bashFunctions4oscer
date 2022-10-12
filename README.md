@@ -1,4 +1,4 @@
-# Bash functions for easing work on the U of Oklahoma  Supercomputer
+# Bash functions to ease work on the U of Oklahoma  Supercomputer
 
 
 These functions can be adapted to run on local machines too!
