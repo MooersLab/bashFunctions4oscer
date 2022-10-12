@@ -13,3 +13,5 @@ May they inspire you to write new bash functions!
 
 ## Related repos
 
+- emacs4oscer
+- vimrc4oscer
