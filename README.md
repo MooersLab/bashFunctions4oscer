@@ -13,6 +13,23 @@ The bash script calls two Python scripts in the subfolder.
 
 May this script inspire you to write new bash functions!
 
+## Usage in bash or zsh shells
+
+These functions work in either bash or zsh shells.
+Source the .bashFunctions file from your .bashrc or .zshrc file.
+Then enter the function name in the terminal and hit return or enter to get a printout in the terminal of the documentation, which incudes examples. 
+
+## Useful functions of note
+
+- The *gac* function combines `git add` and `git commit -m`.
+- The *take* function combines `mkdir` and `cd` to the new directory.
+- The *rmspaces* function removes those annoying whitespaces in the filenames of all files in the current directory.
+- The *rmunderscores* function removes underscores in the filenames of all files in the current directory.
+- The *rmcommas* function removes commas in the filenames of all files in the current directory.
+
+
+## Table of function names and descriptions (planned)
+
 
 ## Related repos
 
