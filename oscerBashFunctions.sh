@@ -15,16 +15,15 @@
 
 # bash functions
 
-bs(){
-	echo "Change shell to bash"
-	ehco "Usage: bs"
-	chsh -s /bin/bash
+function bs {
+echo "Change shell to bash"
+ehco "Usage: bs"
+chsh -s /bin/bash
 }
 
 ### C
 
-ccase()
-{
+function ccase {
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Usage: rename orignal replacement"
@@ -38,12 +37,8 @@ fi
     printf %s "${arr[@]^}"
 }
 
-alias cm="/home/bmooers/bashScripts/checkjobsmooerslab.sh"
-alias cmx="/home/bmooers/bashScripts/checkjobsmooerslabExtend.sh"
 
-
-continueSir()
-{
+function continueSir {
 echo "Function to continue SIR2014 trials."
 echo "Usage: consir2014"
 echo "Run mvdone finished.txt 2371aug22' first"
@@ -52,8 +47,7 @@ uf > unfinished.txt &&
 nohup ./relaunch.sh 2371tpsdm &
 }
 
-ci()
-{
+function ci {
 echo "Checking in on jobs running on Schooner."
 cj &&
 ds &&
@@ -66,8 +60,7 @@ echo "Consider runing a command like: mvdone2scratch finished.txt 2371tpsdm23Aug
 }
 
 
-cj()
-{
+function cj {
 echo "cj ==: checkjobs.sh"
 echo "List pending and running jobs for user bmooers."
 printf  "Pending Jobs\n" &&
@@ -76,30 +69,27 @@ printf "\nRunning Jobs\n" &&
 squeue -u bmooers -t RUNNING -o "%.10i %.24P %.8j %.8u %.8T %.10M %.9l %.6D %R" | sed -n 'p;$='
 }
 
-cpending()
-{
+function cpending {
 echo "Check pending jobs:"
 printf  "Pending Jobs\n" &&
 squeue -u bmooers -t PENDING -o "%.10i %.24P %.8j %.8u %.8T %.10M %.9l %.6D %R" | sed -n 'p;$='
 }
 
 
-crunning()
-{
+function crunning {
 echo "Check running jobs for bmooers:"
 printf  "Running Jobs\n" &&
 squeue -u bmooers -t RUNNING -o "%.10i %.24P %.8j %.8u %.8T %.10M %.9l %.6D %R" | sed -n 'p;$='
 }
 
 
-cs(){
-	echo="Change shell to csh"
-	echo="Usage: cs"
-	chsh -s /bin/csh
+function cs {
+echo="Change shell to csh"
+echo="Usage: cs"
+chsh -s /bin/csh
 }
 
-dcase()
-{
+function dcase {
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Usage: rename orignal replacement"
@@ -120,40 +110,32 @@ spinal_to_upper() {
     printf '%s' "${str[@]^}"
 }
 
-cntfiles()
-{
+function cntfiles {
 echo "Count the files in the directory."
 echo "Usage: cntfiles."
 find . -type f | wc -l
 }
 
-cntdir()
-{
+function cntdir {
 echo "Count the directories in the current directory."
 echo "Usage: cntdir"
 find . -mindepth 1 -maxdepth 1 -type d | wc -l
 }
 
+function cntabi {
+echo "Count the number of *_abi.mtz files in subfolders."
+echo "Usage: cntmtz"
+ls -dq */*_abi.mtz | wc -l
+}
 
-#cntabi()
-#{
-#echo "Count the number of *_abi.mtz files in subfolders."
-#echo "Usage: cntmtz"
-#ls -dq */*_abi.mtz | wc -l
-#}
+function cntpdb {
+echo "Count the number of pdb files in subfolders."
+echo "Usage: cntpdb"
+ls -dq */*.pdb | wc -l
+find ./ -mindepth 1 -maxdepth 1 -type d '!' -exec test -e "{}/*_([1-9999]|****).pdb" ';' -print | wc -l
+}
 
-
-
-#cntpdb()
-#{
-#echo "Count the number of pdb files in subfolders."
-#echo "Usage: cntpdb"
-#ls -dq */*.pdb | wc -l
-#find ./ -mindepth 1 -maxdepth 1 -type d '!' -exec test -e "{}/*_([1-9999]|****).pdb" ';' -print | wc -l
-#}
-
-
-cntTrials(){
+function cntTrials {
 echo "Count the number of Trails attemptedminus 1"
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
@@ -171,7 +153,7 @@ printf "%d\t%s\n" $y "Trials run"
 echo "Success!"
 }
 
-cntuf() {
+function cntuf {
 echo "Count subfolders in a project directory without a pdb file."
 echo "Usage: cntuf"
 find ./ -type d -name '*startphase*' | while read a ;
@@ -181,7 +163,7 @@ fi;
 done | wc -l
 }
 
-cntTimedOut() {
+function cntTimedOut {
 echo "Count subfolders in a project directory without a pdb file."
 echo "Usage: cntuf"
 find ./ -type d -name '*startphase*' | while read a ;
@@ -192,8 +174,7 @@ done | wc -l
 }
 
 
-ct()
-{
+function ct {
 echo "Compile tex file and open with skim."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
@@ -225,8 +206,7 @@ open -a Skim "$1".pdf
 
 ### D
 
-function dirtree()
-{
+function dirtree {
 echo "Get directory tree of specified directory. May have to install tree from external repository."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
@@ -240,10 +220,7 @@ fi
 tree -F -a --dirsfirst $1;
 }
 
-
-
-dssr()
-{
+function dssr {
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Usage: rename orignal replacement"
@@ -268,8 +245,7 @@ cd ..
 
 ### G
 
-G2K()
-{
+function G2K {
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Convert Gibbs Free energy to partition coefficient K."
@@ -283,7 +259,7 @@ fi
 /home/bmooers/pythonScripts/G2K.py $1;
 }
 
-function gac(){
+function gac {
 echo "Function to git add a file and then commit the changes with a message."
 echo "Takes the name of a file and the message in a string."
 echo "Must set up repository in advance of using this function."
@@ -303,12 +279,10 @@ git commit -m "$2" "$1"
 
 
 
-gct()
-{
+function gct {
 echo "Function to git commit changes to one tex file."
 echo "Takes the basename as a command line argument."
 echo "Must set up repository in advance of using."
-
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Usage: gct baseOfTexFileName"
@@ -320,13 +294,11 @@ elif [ $# -gt 1 ]; then
   echo "Note absence of file extension .tex"
   return 2
 fi
-
 git add "$1".tex
 git commit -m "Added new text in $1.tex" "$1".tex
 }
 
-gcpml()
-{
+function gcpml {
 echo "Function to git commit changes to one tex file."
 echo "Takes the basename as a command line argument."
 echo "Must set up repository in advance of using."
@@ -346,8 +318,7 @@ git add "$1".pml
 git commit -m "Added new text in $1.pml" "$1".pml
 }
 
-gcpy()
-{
+function gcpy {
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Usage: gct baseOfTexFileName"
@@ -367,8 +338,7 @@ git add "$1".py
 git commit -m "Added new text in $1.py" "$1".py
 }
 
-gcr()
-{
+function gcr {
 echo "Function to git commit changes to one *.R file."
 echo "Takes the basename as a command line argument."
 echo "Must set up repository in advance of using."
@@ -389,9 +359,7 @@ git add "$1".R
 git commit -m "Added new text in $1.R" "$1".R
 }
 
-
-function getpdb()
-{
+function getpdb{
 echo "Get PDB coordinate file from the Protein Data Bank."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
@@ -405,24 +373,20 @@ fi
 /Users/blaine/Scripts/PythonScripts/pdb_get.py $1;
 }
 
-
-
-
-google() {
+function google {
 echo "send a search term to google from the command line"
 echo "Example: google OUHSC biochemistry"
 echo "Example: google OUHSC Links for Molecular Structure Analysis" 
-    search=""
-    echo "Googling: $@"
-    for term in $@; do
+search=""
+echo "Googling: $@"
+for term in $@; do
         search="$search%20$term"
-    done
-    open "http://www.google.com/search?q=$search"
+done
+open "http://www.google.com/search?q=$search"
 }
 
 ### H 
-helan()
-{
+function helan {
 echo "Runs X3DNA's find_pair and analyze on dsRNA."
 echo "Usage: helanl filestemOfPDBfile."
 mkdir $1'helcialAnalysis'
@@ -440,10 +404,9 @@ $X3DNA/bin/analyze $1'.inp'
 
 
 ### J
-
-function jpt(){
-    # Fires-up a Jupyter notebook by supplying a specific port
-    jupyter notebook --no-browser --port=$1
+function jpt {
+# Fires-up a Jupyter notebook by supplying a specific port
+jupyter notebook --no-browser --port=$1
 }
 
 
@@ -452,32 +415,28 @@ function jpt(){
 
 ### L
 
-function lsf() {
+function lsf {
 echo "Current path: $PWD" 
 ls -ltrG
 }
 
 
-lsnoabi()
-{
+function lsnoabi {
 echo "List folders with *_abi.mtz absent."
 find `pwd` -mindepth 1 -maxdepth 1 -type d '!' -exec test -e "{}/{}_abi.mtz" ';' -print
 }
 
-lsnoabi2()
-{
+function lsnoabi2 {
 echo "List folders with *_abi.mtz absent. Max depth of 2."
 find `pwd` -mindepth 1 -maxdepth 2 -type d '!' -exec test -e "{}/{}_abi.mtz" ';' -print
 }
 
-lsabi()
-{
+function lsabi {
 echo "List all subfolders with *_abi.mtz present."
 find `pwd` -name "*"_abi.mtz -print
 }
 
-lspdb()
-{
+function lspdb {
 #echo "List all subfolders with *.pdb present. Print the path but not the pdb file."
 find `pwd` -name "*".pdb -exec dirname {} \; 
 }
@@ -508,8 +467,7 @@ find `pwd` -name "*".pdb -exec dirname {} \;
 
 
 
-mvdone2home()
-{
+function mvdone2home {
 echo "mvdone2home()"
 echo ""
 echo "Move folders in list in a text file finished.txt to /home/bmooers. One folder per line."
@@ -538,8 +496,7 @@ echo "Moved finished jobs to /home/bmooers/$2. Take care not to overwrite this f
 
 
 
-mvdone2scratch()
-{
+function mvdone2scratch {
 echo "mvdone2scratch()"
 echo ""
 echo "Move folders in list in a text file finished.txt to /scatch/bmooers. One folder per line."
@@ -573,8 +530,7 @@ echo "Moved finished jobs to /scratch/bmooers/$2. Take care not to overwrite thi
 
 ### P
 
-pdfcropall()
-{
+function pdfcropall {
 echo "pdfcrop all pdfs in a directory by trimming away the white borders."
 echo "Usage: pdfcropall"
 echo "pdbcrop must be installed. "
@@ -586,8 +542,7 @@ for FILE in ./*.pdf
 }
 
 
-function pyc()
-{
+function pyc {
 echo "Evaluate simple math expressions with Python. Math expression must be passed inside double quotes."
 echo 'Example1 using built-in: pyc "110./10."'
 echo 'Example2 using the math module: pyc "math.sin(math.radians(90))"'
@@ -610,8 +565,7 @@ alias dzepub="rename 's/\(z-lib.org\)./\./' *.epub"
 
 
 ### R
-rmcommas()
-{
+function rmcommas {
 echo "Remove commas in all filenames in a directory"
 echo "Usage: rmcommas"
 for f in *,*;
@@ -621,7 +575,7 @@ for f in *,*;
 }
 
 
-rmduplicates(){
+function rmduplicates {
 echo "Remove duplicate files. This function will remove those duplicate pdfs that you downloaded."
 echo "This function requires bash version 4.0+ because it has the array function."
 echo "The default bash on Mac is older than version 4.0. Install a newer bash with macports or fink or homebrew." 
@@ -640,8 +594,7 @@ for file in **;
 }
 
 
-rmspaces()
-{
+function rmspaces {
 echo "Remove whitespaces in all filenames in a directory"
 echo "Usage: rmspaces"
 for f in *\ *;
@@ -651,8 +604,7 @@ for f in *\ *;
 }
 
 
-rmunderscores()
-{
+function rmunderscores {
 echo "Remove underscores in all filenames in a directory"
 echo "Usage: rmscores"
 for f in *_*;
@@ -722,7 +674,7 @@ for f in *_*;
 #}
 
 
-rename(){
+function rename {
 echo "Rename filenames in current folder with the Rename.py script." 
 if [ $# -lt 2 ]; then
   echo 1>&2 "$0: not enough arguments"
@@ -753,9 +705,7 @@ do
 done
 }
 
-
-resubmit()
-{
+function resubmit {
 echo "Resubmit unfinsihed jobs to the queue."
 echo "Usage: resubmit sirjobname"
 echo "Example: resubmit 2371tpsdm"
@@ -772,7 +722,7 @@ nohup ./relaunch.sh $1 &
 }
 
 
-rmspaces(){
+function rmspaces {
 echo "Remove whitespaces in all filenames in a directory"
 echo "Usage: rmspaces"
 for f in *\ *; 
@@ -784,8 +734,7 @@ for f in *\ *;
 
 ### S
 
-shortcursor()
-{
+function shortcursor {
 echo "Make shortcursor."
 echo "Usage: shortcursor"
 PS1='\u:\W\$ '  
@@ -796,7 +745,7 @@ PS1='\u:\W\$ '
 
 # Source:  Bozhidar Batsov https://batsov.com/
 
-function take() {
+function take {
   if [[ $1 =~ ^(https?|ftp).*\.tar\.(gz|bz2|xz)$ ]]; then
     takeurl "$1"
   elif [[ $1 =~ ^([A-Za-z0-9]\+@|https?|git|ssh|ftps?|rsync).*\.git/?$ ]]; then
@@ -807,8 +756,7 @@ function take() {
 }
 
 
-function tre()
-{
+function tre {
 echo "Get directory tree of specified directory. May have to install tree from external repository."
 if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
@@ -826,9 +774,7 @@ tree -F -a --dirsfirst $1;
 
 ### U
 
-# bash functions
-
-uf() {
+function uf {
 echo "Search subfolders in a project directory for folders without a pdb file."
 echo "I have had some false positives. Check the results before doing anything rash."
 echo "Usage: uf" 
@@ -839,7 +785,7 @@ fi;
 done
 }
 
-unfincnt() {
+function unfincnt {
 if [ $# -lt 2 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Usage: unfincnt projectDirectory prefix1" 
@@ -864,7 +810,7 @@ find "./"$1 -mindepth 1 -maxdepth 2 -type d '!' -exec test -e "{}/"$2"_([1-9999]
 
 ### W
 
-whileLoop(){ 
+function whileLoop { 
 FILE1=$1
 echo "Runs script every 5 seconds for 10 times"
 echo "Usage: whileLoop scriptfile"
@@ -887,7 +833,7 @@ done
 
 ### Z
 
-zsh() {
+function zsh {
 echo "Change the shell language of the terminal to zsh."
 echo "Usage: zsh"
 chsh -s /bin/zsh
