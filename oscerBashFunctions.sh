@@ -105,9 +105,9 @@ fi
 
 # spinal_to_upper "some-string-like-this"
 # returns "SomeStringLikeThis"
-spinal_to_upper() {
-    IFS=- read -ra str <<<"$1"
-    printf '%s' "${str[@]^}"
+function spinal_to_upper{
+IFS=- read -ra str <<<"$1"
+printf '%s' "${str[@]^}"
 }
 
 function cntfiles {
@@ -172,7 +172,6 @@ then echo $a;
 fi;
 done | wc -l
 }
-
 
 function ct {
 echo "Compile tex file and open with skim."
@@ -690,7 +689,7 @@ fi
 }
 
 # repeat a command a specific number of times
-repeat() {
+function repeat {
 echo "Example usage: repeat 61 ./quizDP.py"
 echo "The first argument is the time in seconds that the script is delayed."
 echo " "
@@ -721,7 +720,6 @@ uf > unfinished.txt &&
 nohup ./relaunch.sh $1 & 
 }
 
-
 function rmspaces {
 echo "Remove whitespaces in all filenames in a directory"
 echo "Usage: rmspaces"
@@ -731,7 +729,6 @@ for f in *\ *;
   done
 }
 
-
 ### S
 
 function shortcursor {
@@ -740,11 +737,9 @@ echo "Usage: shortcursor"
 PS1='\u:\W\$ '  
 }
 
-
 ### T
 
 # Source:  Bozhidar Batsov https://batsov.com/
-
 function take {
   if [[ $1 =~ ^(https?|ftp).*\.tar\.(gz|bz2|xz)$ ]]; then
     takeurl "$1"
