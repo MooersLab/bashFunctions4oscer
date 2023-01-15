@@ -1,9 +1,9 @@
-# Bash functions to ease work on the U of Oklahoma's Supercomputer 
+# Bash functions to ease work on the University of Oklahoma's Supercomputer 
 
-The U of O's supercomputer is called schooner and is run by the 
-Oklahoma Center for Supercomputing Education and Research.
+The University of Oklahoma's supercomputer is called schooner and is run by the 
+Oklahoma Center for Supercomputing Education and Research [(OSCER)](https://www.ou.edu/oscer).
 
-The supercomputer uses the SLURM job queuing software. 
+The supercomputer uses the [SLURM](https://slurm.schedmd.com/overview.html) job queuing software. 
 Some of the functions ease the use of this system.
 Other functions ease doing boring tasks.
 
