@@ -7,7 +7,7 @@ The supercomputer uses the [SLURM](https://slurm.schedmd.com/overview.html) job 
 Some of the functions ease the use of this system.
 Other functions ease doing boring tasks.
 
-These functions can be adapted to run on local machines too (Mac OSX and Linux)!
+These functions can be adapted to run on local unix-like machines (e.g.,  macOS and Linux)!
 The file paths will need editing.
 The bash script calls two Python scripts in the subfolder.
 
