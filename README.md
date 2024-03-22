@@ -1,3 +1,7 @@
+![version](https://img.shields.io/static/v1?label=bashFunctions4oscer&message=0.1&color=brightcolor)
+[![license: mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/mit)
+
+
 # Bash functions to ease work on the University of Oklahoma's Supercomputer 
 
 The University of Oklahoma's supercomputer is called schooner and is run by the 
