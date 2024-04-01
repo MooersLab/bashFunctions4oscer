@@ -35,7 +35,17 @@ Then enter the function name in the terminal and hit return or enter to get a pr
 ## Table of function names and descriptions (planned)
 
 
+
+
 ## Related repos
 
 - [emacs4oscer](https://github.com/MooersLab/emacs4oscer)
 - [vimrc4oscer](https://github.com/MooersLab/vimrc4oscer)
+
+## Sources of funding
+
+- NIH: R01 CA242845
+- NIH: R01 AI088011
+- NIH: P30 CA225520 (PI: R. Mannel)
+- NIH: P20 GM103640 and P30 GM145423 (PI: A. West)
+
