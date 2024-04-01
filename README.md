@@ -3,7 +3,7 @@
 
 
 # Bash functions to ease work on the University of Oklahoma's Supercomputer 
-
+Come on
 The University of Oklahoma's supercomputer is called schooner and is run by the 
 Oklahoma Center for Supercomputing Education and Research [(OSCER)](https://www.ou.edu/oscer).
 
