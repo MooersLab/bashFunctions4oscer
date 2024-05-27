@@ -3,9 +3,8 @@
 
 
 # Bash functions to ease work on the University of Oklahoma's Supercomputer 
-Come on
-The University of Oklahoma's supercomputer is called schooner and is run by the 
-Oklahoma Center for Supercomputing Education and Research [(OSCER)](https://www.ou.edu/oscer).
+
+The University of Oklahoma's supercomputer is called *Schooner* and is run by the Oklahoma Center for Supercomputing Education and Research [(OSCER)](https://www.ou.edu/oscer).
 
 The supercomputer uses the [SLURM](https://slurm.schedmd.com/overview.html) job queuing software. 
 Some of the functions ease the use of this system.
@@ -21,7 +20,7 @@ May this script inspire you to write new bash functions!
 
 These functions work in either bash or zsh shells.
 Source the .bashFunctions file from your .bashrc or .zshrc file.
-Then enter the function name in the terminal and hit return or enter to get a printout in the terminal of the documentation, which incudes examples. 
+Then, enter the function name in the terminal and hit return or enter to get a printout in the terminal of the documentation, which includes examples. 
 
 ## Useful functions of note
 
@@ -35,9 +34,7 @@ Then enter the function name in the terminal and hit return or enter to get a pr
 ## Table of function names and descriptions (planned)
 
 
-
-
-## Related repos
+## Related repositories
 
 - [emacs4oscer](https://github.com/MooersLab/emacs4oscer)
 - [vimrc4oscer](https://github.com/MooersLab/vimrc4oscer)
